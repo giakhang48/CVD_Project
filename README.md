@@ -4,11 +4,14 @@ Machine learning project predicting cardiovascular disease risk from the
 [CVD_cleaned](https://www.kaggle.com/) dataset (BRFSS-derived, 308,854 records).
 Built for the DAP391m course at FPT University, Can Tho.
 
+**Live demo:** [uhuhihihehe.streamlit.app](https://uhuhihihehe.streamlit.app/)
+*(Educational demo only — please do not enter real personal health information.)*
+
 ## What's in this repo
 
 | File / Folder | Description |
 |---|---|
-| `CVD_analysis.ipynb` | Full analysis notebook: encoding, EDA, feature engineering, class-imbalance handling, 9-model benchmark across 3 seeds, confusion matrix / ROC-AUC, feature importance, advanced visualizations (Waffle, Area, Pie, Scatter, Word Cloud, Choropleth). |
+| `CVD_ana.ipynb` | Full analysis notebook: encoding, EDA, feature engineering, class-imbalance handling, 9-model benchmark across 3 seeds, confusion matrix / ROC-AUC, feature importance, advanced visualizations (Waffle, Area, Pie, Scatter, Word Cloud, Choropleth). |
 | `CVD_Research_Paper.docx` | IMRaD-format research paper summarizing the project (Introduction, Related Work, Methods, Results, Discussion, Limitations, References). |
 | `streamlit_app/app.py` | Streamlit web app: heart disease risk prediction form + a TF-IDF/cosine-similarity chatbot answering questions about risk factors and the model. |
 | `streamlit_app/requirements.txt` | Python dependencies for the app. |
@@ -36,7 +39,7 @@ Then open the local URL Streamlit prints (usually `http://localhost:8501`).
 
 ## Running the notebook
 
-Open `CVD_analysis.ipynb` in Jupyter or VS Code. The `CVD_cleaned.csv` source file
+Open `CVD_ana.ipynb` in Jupyter or VS Code. The `CVD_cleaned.csv` source file
 (not included here — download from Kaggle) should sit in the same folder
 before re-running the notebook from scratch.
 
