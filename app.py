@@ -1,11 +1,11 @@
 """
 Heart Disease Risk Screening App
 ---------------------------------
-A Streamlit application built on top of the CVD_ana.ipynb analysis.
+A Streamlit application built on top of the CVD_analysis.ipynb analysis.
 
 Two tabs:
 1. Risk Prediction - enters health indicators, gets a risk estimate from the
-   trained XGBoost model (Step 6/10 of the notebook, balanced strategy).
+   trained XGBoost model (Steps 11-13 of the notebook, balanced strategy).
 2. Chatbot - a simple TF-IDF + cosine-similarity retrieval chatbot that answers
    common questions about heart disease risk factors and how to read the
    prediction (same technique used in an earlier retrieval-based chatbot
@@ -32,7 +32,7 @@ def load_model():
 model, feature_columns = load_model()
 
 # ----------------------------------------------------------------------
-# Encoding helpers (must match CVD_ana.ipynb Step 1 and Step 3 exactly)
+# Encoding helpers (must match CVD_analysis.ipynb Step 1 and Step 2 exactly)
 # ----------------------------------------------------------------------
 HEALTH_ORDER = {"Poor": 0, "Fair": 1, "Good": 2, "Very Good": 3, "Excellent": 4}
 CHECKUP_ORDER = {
@@ -124,8 +124,8 @@ FAQ = [
      "a person has: skin cancer, other cancer, depression, arthritis, and diabetes. It was one "
      "of the more important engineered features in the model."),
     ("How accurate is this model?",
-     "The underlying XGBoost model has an ROC-AUC of about 0.82 and misses roughly 29% of true "
-     "heart disease cases (recall about 71%). It is intended as a screening aid, not a diagnosis."),
+     "The underlying XGBoost model has an ROC-AUC of about 0.82 and misses roughly 31% of true "
+     "heart disease cases (recall about 69%). It is intended as a screening aid, not a diagnosis."),
     ("Can this app diagnose heart disease?",
      "No. This app estimates statistical risk based on survey-style inputs. It cannot replace a "
      "doctor, an ECG, blood tests, or other clinical evaluation. If you are concerned about your "
@@ -178,7 +178,7 @@ def chatbot_answer(user_question: str, threshold: float = 0.15):
 # UI
 # ----------------------------------------------------------------------
 st.title("\U0001FAC0 Heart Disease Risk Screening")
-st.caption("Built on the CVD_cleaned analysis (XGBoost, balanced strategy, ROC-AUC 0.817). "
+st.caption("Built on the CVD_cleaned analysis (XGBoost, balanced strategy, ROC-AUC 0.816). "
            "For education and screening demonstration only \u2014 not a medical diagnosis.")
 
 tab_predict, tab_chat = st.tabs(["\U0001F4CA Risk Prediction", "\U0001F4AC Chatbot"])
@@ -237,7 +237,7 @@ with tab_predict:
         with right:
             st.progress(min(proba, 1.0))
             st.caption(
-                "This is a statistical estimate from a screening model (recall \u2248 71%, "
+                "This is a statistical estimate from a screening model (recall \u2248 69%, "
                 "ROC-AUC \u2248 0.82), not a diagnosis. Consult a healthcare professional for "
                 "medical evaluation."
             )
